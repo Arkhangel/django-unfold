@@ -25,6 +25,7 @@ classifiers = [
 [tool.poetry.dependencies]
 python = ">=3.8"
 django = ">=3.2"
+pytils = {git = "https://github.com/Arkhangel/pytils.git"}
 
 [tool.poetry.group.test.dependencies]
 pytest = "^8.3"
