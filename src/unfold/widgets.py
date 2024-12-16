@@ -35,7 +35,7 @@ from .exceptions import UnfoldException
 
 LABEL_CLASSES = [
     "block",
-    "font-medium",
+    "font-semibold",
     "mb-2",
     "text-font-important-light",
     "text-sm",
@@ -43,7 +43,7 @@ LABEL_CLASSES = [
 ]
 
 CHECKBOX_LABEL_CLASSES = [
-    "font-medium",
+    "font-semibold",
     "ml-2",
     "text-sm",
     "text-font-important-light",
@@ -332,6 +332,8 @@ class UnfoldAdminImageSmallFieldWidget(FileFieldMixin, AdminFileWidget):
 
 
 class UnfoldAdminDateWidget(AdminDateWidget):
+    template_name = "unfold/widgets/date.html"
+
     def __init__(
         self, attrs: Optional[Dict[str, Any]] = None, format: Optional[str] = None
     ) -> None:
@@ -358,6 +360,8 @@ class UnfoldAdminSingleDateWidget(AdminDateWidget):
 
 
 class UnfoldAdminTimeWidget(AdminTimeWidget):
+    template_name = "unfold/widgets/time.html"
+
     def __init__(
         self, attrs: Optional[Dict[str, Any]] = None, format: Optional[str] = None
     ) -> None:

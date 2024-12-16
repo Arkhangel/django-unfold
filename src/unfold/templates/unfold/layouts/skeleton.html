@@ -33,6 +33,7 @@
 
         <script src="{% static 'unfold/js/alpine.anchor.js' %}" defer></script>
         <script src="{% static 'unfold/js/alpine.persist.js' %}" defer></script>
+        <script src="{% static 'unfold/js/alpine.sort.js' %}" defer></script>
         <script src="{% static 'unfold/js/alpine.js' %}" defer></script>
         <script src="{% static 'unfold/js/htmx.js' %}"></script>
         <script src="{% static 'unfold/js/chart.js' %}"></script>
@@ -57,7 +58,7 @@
 
         {% if colors %}
             <style>
-                html {
+                :root {
                     {% for name, weights in colors.items %}
                         {% for weight, value in weights.items %}
                             --color-{{ name }}-{{ weight }}: {{ value }};

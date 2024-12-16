@@ -233,12 +233,15 @@ class ModelAdmin(ModelAdminMixin, BaseModelAdmin):
     add_fieldsets = ()
     list_horizontal_scrollbar_top = False
     list_filter_submit = False
+    list_filter_sheet = True
     list_fullwidth = False
     list_disable_select_all = False
     list_before_template = None
     list_after_template = None
     change_form_before_template = None
     change_form_after_template = None
+    change_form_outer_before_template = None
+    change_form_outer_after_template = None
     compressed_fields = False
     readonly_preprocess_fields = {}
     warn_unsaved_form = False
@@ -471,7 +474,12 @@ class ModelAdmin(ModelAdminMixin, BaseModelAdmin):
             for action in self.get_actions_row(request)
         ]
 
-        extra_context.update({"actions_list": actions, "actions_row": actions_row})
+        extra_context.update(
+            {
+                "actions_list": actions,
+                "actions_row": actions_row,
+            }
+        )
 
         return super().changelist_view(request, extra_context)
 
@@ -560,8 +568,12 @@ class ModelAdmin(ModelAdminMixin, BaseModelAdmin):
 class TabularInline(ModelAdminMixin, BaseTabularInline):
     formfield_overrides = FORMFIELD_OVERRIDES_INLINE
     readonly_preprocess_fields = {}
+    ordering_field = None
+    hide_ordering_field = False
 
 
 class StackedInline(ModelAdminMixin, BaseStackedInline):
     formfield_overrides = FORMFIELD_OVERRIDES_INLINE
     readonly_preprocess_fields = {}
+    ordering_field = None
+    hide_ordering_field = False
