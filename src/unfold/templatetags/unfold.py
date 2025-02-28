@@ -9,8 +9,10 @@ from django.forms import Field
 from django.http import HttpRequest
 from django.template import Context, Library, Node, RequestContext, TemplateSyntaxError
 from django.template.base import NodeList, Parser, Token, token_kwargs
+from django.template.defaultfilters import stringfilter
 from django.template.loader import render_to_string
 from django.utils.safestring import SafeText
+from pytils.translit import slugify as _slugify
 
 from unfold.components import ComponentRegistry
 from unfold.dataclasses import UnfoldAction
@@ -486,3 +488,9 @@ def action_item_classes(context: Context, action: UnfoldAction) -> str:
         )
 
     return " ".join(set(classes))
+
+
+@register.filter(is_safe=True, name='slugify')
+@stringfilter
+def slugify(value):
+    return _slugify(value)
