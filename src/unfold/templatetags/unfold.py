@@ -490,7 +490,7 @@ def action_item_classes(context: Context, action: UnfoldAction) -> str:
     return " ".join(set(classes))
 
 
-@register.filter(is_safe=True, name='slugify')
+@register.filter(is_safe=True, name="slugify")
 @stringfilter
 def slugify(value):
     return _slugify(value)
